@@ -1,0 +1,8 @@
+# Folder
+.gradle
+.idea
+gradle
+
+
+# File
+gradle-example.iml
