@@ -1,17 +1,12 @@
 package model;
 
-public class ToDoItem
+import static com.google.common.base.Preconditions.checkNotNull;
+
+public class ToDoItem implements Comparable<ToDoItem>
 {
     private Long id;
     private String name;
     private boolean completed;
-
-    public ToDoItem(Long id, String name, boolean completed)
-    {
-        this.id = id;
-        this.name = name;
-        this.completed = completed;
-    }
 
     public Long getId()
     {
@@ -41,5 +36,20 @@ public class ToDoItem
     public void setCompleted(boolean completed)
     {
         this.completed = completed;
+    }
+
+    @Override
+    public int compareTo(ToDoItem compared)
+    {
+        checkNotNull(compared);
+        Long currentId = this.getId();
+        Long comparedId = compared.getId();
+        if (currentId > comparedId) {
+            return 1;
+        } else if (currentId < comparedId) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
